@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Document</title>
-</head>
-<body>
-    <center>
-        <h1>Hello World!!!</h1>
-    </center>
-</body>
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            二维码生成工具
+        </title>
+		<style>
+			* {	padding: 0;	margin: 0;	border: none;	font-family: 'consolas', 'MicroSoftYahei';}a {	color: #fff;	text-decoration: none;}a:hover {	color: #0f0;}h1 {	color: #fff;	text-shadow: -2px 2px rgba(255, 255, 255, 0.3);	text-align: center;	margin-top: 30px;}body {	background: #333;}table {	min-width: 90%;	cursor: pointer;	font-size: 18px;	margin: 30px auto;	border: 1px #fff solid;	border-collapse: collapse;	-webkit-touch-callout: none;	-webkit-user-select: none;	-khtml-user-select: none;	-moz-user-select: none;	-ms-user-select: none;	user-select: none;}table tr:nth-child(odd) {	color: #fff;	line-height: 38px;	text-align: center;	background: rgba(0, 0, 0, 0.6);	border: 1px rgba(255, 255, 255, 0.8) solid;}table tr:nth-child(even) {	color: #fff;	line-height: 38px;	text-align: center;	background: rgba(45, 45, 45, 0.6);	border: 1px rgba(255, 255, 255, 0.8) solid;}table tr:hover {	background: rgba(255, 255, 255, 0.2);}table tr td, th {	border: 1px rgba(255, 255, 255, 0.8) solid;}form {	width: 500px;	color: #fff;	font-size: 17px;	margin: 30px auto;	border-radius: 30px;	font-weight: lighter;	padding: 60px 60px 60px 200px;	background: rgba(255, 255, 255, 0.2);}input[type='text'], input[type='password'], input[type='date'], input[type='email'],	input[type='tel'] {	color: #fff;	min-width: 200px;	height: 28px;	margin: 10px 0;	font-size: 16px;	padding-left: 5px;	border-radius: 3px;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.2);}input[type='radio'], input[type='checkbox'] {	margin: 15px 12px 15px 8px;}select {	color: #fff;	height: 28px;	font-size: 16px;	border-radius: 3px;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.2);}select option {	color: #000;}textarea {	color: #fff;	min-width: 300px;	height: 60px;	padding: 10px;	font-size: 16px;	border-radius: 6px;	margin: 15px 12px 0 0;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.2);}input[type='button'], input[type='submit'] {	color: #fff;	min-width: 80px;	height: 25px;	font-size: 16px;	margin: 0 4px;	line-height: 22px;	border-radius: 6px;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.3);	border-radius: 6px;	line-height: 22px;}form input[type='button'], form input[type='submit'] {	height: 30px;	min-width: 80px;	color: #fff;	font-size: 16px;	border-radius: 6px;	margin: 30px 12px 0 0;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.3);}table input[type='button'], table input[type='submit'] {	color: #fff;	min-width: 80px;	height: 25px;	font-size: 16px;	margin: 0 4px;	line-height: 22px;	border-radius: 6px;	border: 1px solid #fff;	background: rgba(255, 255, 255, 0.3);	border-radius: 6px;	line-height: 22px;}form input[type='button']:hover, form input[type='submit']:hover {	background: rgba(0, 0, 0, 0.3);}table input[type='button']:hover, table input[type='submit']:hover {	font-weight: bolder;	background: rgba(0, 0, 0, 0.3);}.page { /*页面分页数字按钮的样式*/	min-width: 26px !important;	height: 26px !important;	font-size: 14px !important;	margin: 0 -14px !important;	line-height: 26px !important;	border-radius: 2px !important;	display: inline-block !important;	border: 1px solid #ffffff !important;}.page:hover { /*页面分页数字按钮的鼠标滑过效果*/	color: #000000;	cursor: pointer;	background: rgba(255, 255, 255, 1);}.currentPage { /*显示当前页的数字按钮样式*/	color: #000000 !important;	cursor: pointer !important;	min-width: 26px !important;	height: 26px !important;	font-size: 14px !important;	margin: 0 -14px !important;	line-height: 26px !important;	border-radius: 2px !important;	display: inline-block !important;	background: rgba(255, 255, 255, 1) !important;	border: 1px solid #ffffff !important;}
+		</style>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript">
+            function generateImage() {
+                $("#newImage").remove();
+                var content = $("#content").val();
+                if (content == '') {
+                    alert("请务必要输入一些文字!");
+                } else {
+                    $("center").append(
+                            "<img style='border: 50px solid #fff;' alt='" + content
+                                    + "' src=' https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+                                    + content + "' id='newImage' title='" + content + "'/>");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <center>
+            <textarea cols="30" id="content" rows="3"></textarea>
+            <br/>
+            <br/>
+            <br/>
+            <input onclick="generateImage()" style="width: 100px;" type="submit" value="生成二维码"/>
+            <br/>
+            <br/>
+            <br/>
+        </center>
+    </body>
 </html>
